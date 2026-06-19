@@ -1,0 +1,134 @@
+.reaction-test-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.reaction-title-box {
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 12px;
+  color: #111827;
+  font-weight: 800;
+  font-size: 20px;
+  background: linear-gradient(135deg, #ffd60a, #ffb703);
+}
+.score-board {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: rgba(52, 152, 219, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(52, 152, 219, 0.35);
+  color: #f3f4f6;
+  font-weight: 600;
+}
+.screen {
+  width: 350px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 12px 20px;
+  box-sizing: border-box;
+
+  color: #111827;
+  font-weight: 600;
+
+  border: 8px solid #6b7280;
+  border-radius: 18px;
+
+  box-shadow:
+    inset 0 0 20px rgba(255, 255, 255, 0.08),
+    0 10px 25px rgba(0, 0, 0, 0.35);
+
+  overflow: hidden;
+  position: relative;
+}
+.screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    transparent 45%
+  );
+
+  pointer-events: none;
+}
+.screen.start {
+  background: rgba(0, 229, 255, 0.35);
+}
+
+.screen.wait {
+  background: rgba(255, 59, 48, 0.65);
+}
+
+.screen.ready {
+  background: rgba(46, 204, 113, 0.75);
+  box-shadow: 0 0 25px rgba(46, 204, 113, 0.6);
+  cursor: pointer;
+}
+
+.screen.result,
+.screen.early {
+  background: rgba(52, 152, 219, 0.65);
+}
+
+.result-time {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.result-comment {
+  margin-top: 10px;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 400px) {
+  .score-board,
+  .screen,
+  .reaction-title-box {
+    width: 300px;
+  }
+  .screen {
+    height: 250px;
+  }
+}
+
+.button {
+  padding: 12px 24px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+.button.start,
+.button.again {
+  background: #10b981;
+}
+.button.wait {
+  visibility: hidden;
+}
+.button.start:hover,
+.button.again:hover {
+  transform: translateY(-2px);
+}
+
+.button {
+  transition: all 0.2s ease;
+}
