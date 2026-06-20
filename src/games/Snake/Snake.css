@@ -1,0 +1,182 @@
+.snake-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.snake-header {
+  text-align: center;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff680a, #fc02a5);
+  color: #111827;
+}
+
+.snake-header h2 {
+  margin: 0;
+}
+
+.snake-header div {
+  display: flex;
+  justify-content: space-around;
+  font-size: 16px;
+  font-weight: 600;
+}
+.board-container {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+
+  text-align: center;
+  z-index: 10;
+}
+.snake-board {
+  width: 400px;
+  height: 400px;
+  background: greenyellow;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+
+  border: 2px solid #111827;
+
+  touch-action: none;
+}
+
+@media (max-width: 400px) {
+  .snake-board,
+  .snake-header {
+    width: 300px;
+  }
+  .snake-board {
+    height: 300px;
+  }
+}
+.cell {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.head {
+  background: #22c55e;
+  border-radius: 35%;
+  border: none;
+  position: relative;
+}
+.head::before,
+.head::after {
+  content: "";
+  position: absolute;
+  width: 15%;
+  height: 15%;
+  background: white;
+  border-radius: 50%;
+}
+
+/*Looking right eyes*/
+.head.right::before {
+  top: 25%;
+  right: 20%;
+}
+.head.right::after {
+  bottom: 25%;
+  right: 20%;
+}
+
+/*Looking left eyes*/
+.head.left::before {
+  top: 25%;
+  left: 20%;
+}
+.head.left::after {
+  bottom: 25%;
+  left: 20%;
+}
+
+/*Looking up eyes*/
+.head.up::before {
+  top: 20%;
+  left: 25%;
+}
+
+.head.up::after {
+  top: 20%;
+  right: 25%;
+}
+
+/*Looking down eyes*/
+.head.down::before {
+  bottom: 20%;
+  left: 25%;
+}
+
+.head.down::after {
+  bottom: 20%;
+  right: 25%;
+}
+
+.body {
+  background-color: #16a34a;
+  border: none;
+  border-radius: 15%;
+}
+
+.food {
+  background: #ef4444;
+  border-radius: 50%;
+  transform: scale(0.8);
+  position: relative;
+  animation: pulse 1s infinite;
+}
+.food::before {
+  content: "";
+  position: absolute;
+  width: 15%;
+  height: 25%;
+  background: #166534;
+  top: -10%;
+  left: 45%;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0.75);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(0.75);
+  }
+}
+
+.restart-btn {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #22c55e;
+  color: white;
+}
+.restart-btn.disable {
+  visibility: hidden;
+}
