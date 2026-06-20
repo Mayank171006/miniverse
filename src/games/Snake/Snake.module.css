@@ -1,4 +1,4 @@
-.snake-screen {
+.screen {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-.snake-header {
+.header {
   text-align: center;
   width: 350px;
   display: flex;
@@ -20,17 +20,17 @@
   color: #111827;
 }
 
-.snake-header h2 {
+.header h2 {
   margin: 0;
 }
 
-.snake-header div {
+.header div {
   display: flex;
   justify-content: space-around;
   font-size: 16px;
   font-weight: 600;
 }
-.board-container {
+.boardContainer {
   position: relative;
 }
 
@@ -49,7 +49,7 @@
   text-align: center;
   z-index: 10;
 }
-.snake-board {
+.board {
   width: 400px;
   height: 400px;
   background: greenyellow;
@@ -63,11 +63,11 @@
 }
 
 @media (max-width: 400px) {
-  .snake-board,
-  .snake-header {
+  .board,
+  .header {
     width: 300px;
   }
-  .snake-board {
+  .board {
     height: 300px;
   }
 }
@@ -92,43 +92,43 @@
 }
 
 /*Looking right eyes*/
-.head.right::before {
+.right::before {
   top: 25%;
   right: 20%;
 }
-.head.right::after {
+.right::after {
   bottom: 25%;
   right: 20%;
 }
 
 /*Looking left eyes*/
-.head.left::before {
+.left::before {
   top: 25%;
   left: 20%;
 }
-.head.left::after {
+.left::after {
   bottom: 25%;
   left: 20%;
 }
 
 /*Looking up eyes*/
-.head.up::before {
+.up::before {
   top: 20%;
   left: 25%;
 }
 
-.head.up::after {
+.up::after {
   top: 20%;
   right: 25%;
 }
 
 /*Looking down eyes*/
-.head.down::before {
+.down::before {
   bottom: 20%;
   left: 25%;
 }
 
-.head.down::after {
+.down::after {
   bottom: 20%;
   right: 25%;
 }
@@ -169,7 +169,7 @@
   }
 }
 
-.restart-btn {
+.restartBtn {
   padding: 6px 16px;
   border: none;
   border-radius: 6px;
@@ -177,6 +177,6 @@
   background-color: #22c55e;
   color: white;
 }
-.restart-btn.disable {
+.disable {
   visibility: hidden;
 }

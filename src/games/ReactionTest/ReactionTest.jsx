@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import "./ReactionTest.css";
-import { randomTimeGenerator, getReactionMessage } from "./utils";
+import styles from "./ReactionTest.module.css";
+import {
+  randomTimeGenerator,
+  getReactionMessage,
+  screenClasses,
+  buttonClasses,
+} from "./utils";
 const ReactionTest = () => {
   const [best, setBest] = useState("__");
   const [totalTime, setTotalTime] = useState(0);
@@ -59,27 +64,32 @@ const ReactionTest = () => {
   const avg = gamesCount === 0 ? null : totalTime / gamesCount;
 
   return (
-    <div className="reaction-test-container">
-      <div className="reaction-title-box">
-        <span>Reaction Test</span>
+    <div className={styles.Container}>
+      <div className={styles.titleBox}>Reaction Test</div>
+
+      <div className={styles.scoreBoard}>
+        <span>Best: {best === "__" ? "__" : `${best} ms`}</span>
+
+        <span>Average: {avg == null ? "__" : `${avg.toFixed(2)} ms`}</span>
       </div>
-      <div className="score-board">
-        <span> Best: {best == "__" ? `${best}` : `${best} ms`} </span>
-        <span> Average: {avg == null ? `__` : `${avg.toFixed(2)} ms`}</span>
-      </div>
-      <div className={`screen ${screenState}`} onClick={handleClickScreen}>
-        <span className="result-time">{message}</span>
+
+      <div
+        className={`${styles.screen} ${screenClasses[screenState]}`}
+        onClick={handleClickScreen}
+      >
+        <span className={styles.resultTime}>{message}</span>
 
         {screenState === "result" && (
-          <span className="result-comment">{reactionComment}</span>
+          <span className={styles.resultComment}>{reactionComment}</span>
         )}
       </div>
+
       <button
-        className={`button ${buttonState}`}
+        className={`${styles.button} ${buttonClasses[buttonState]}`}
         onClick={startGame}
         disabled={screenState === "wait"}
       >
-        {buttonState == "start" ? "Start" : "Play Again"}
+        {buttonState === "start" ? "Start Game" : "Play Again"}
       </button>
     </div>
   );

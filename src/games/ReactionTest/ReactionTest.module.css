@@ -1,10 +1,10 @@
-.reaction-test-container {
+.Container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
-.reaction-title-box {
+.titleBox {
   width: 350px;
   display: flex;
   justify-content: center;
@@ -16,7 +16,7 @@
   font-size: 20px;
   background: linear-gradient(135deg, #ffd60a, #ffb703);
 }
-.score-board {
+.scoreBoard {
   width: 350px;
   display: flex;
   justify-content: space-between;
@@ -66,39 +66,39 @@
 
   pointer-events: none;
 }
-.screen.start {
+.screenStart {
   background: rgba(0, 229, 255, 0.35);
 }
 
-.screen.wait {
+.screenWait {
   background: rgba(255, 59, 48, 0.65);
 }
 
-.screen.ready {
+.screenReady {
   background: rgba(46, 204, 113, 0.75);
   box-shadow: 0 0 25px rgba(46, 204, 113, 0.6);
   cursor: pointer;
 }
 
-.screen.result,
-.screen.early {
+.screenResult,
+.screenEarly {
   background: rgba(52, 152, 219, 0.65);
 }
 
-.result-time {
+.resultTime {
   font-size: 2rem;
   font-weight: 800;
 }
 
-.result-comment {
+.resultComment {
   margin-top: 10px;
   font-size: 1.4rem;
 }
 
 @media (max-width: 400px) {
-  .score-board,
+  .scoreBoard,
   .screen,
-  .reaction-title-box {
+  .titleBox {
     width: 300px;
   }
   .screen {
@@ -116,19 +116,16 @@
   font-weight: 600;
 
   cursor: pointer;
+  transition: all 0.2s ease;
 }
-.button.start,
-.button.again {
+.buttonStart,
+.buttonAgain {
   background: #10b981;
 }
-.button.wait {
+.buttonWait {
   visibility: hidden;
 }
-.button.start:hover,
-.button.again:hover {
+.buttonStart:hover,
+.buttonAgain:hover {
   transform: translateY(-2px);
-}
-
-.button {
-  transition: all 0.2s ease;
 }

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import "./SimonSays.css";
+import styles from "./SimonSays.module.css";
 import { playTileSound } from "./sounds";
 import Scoreboard from "./components/Scoreboard";
 import Statusbox from "./components/Statusbox";
@@ -121,7 +121,7 @@ const SimonSays = () => {
   };
 
   return (
-    <div className="simon-container">
+    <div className={styles.simonContainer}>
       <Scoreboard score={score} round={round} highScore={highScore} />
       <Statusbox status={status} message={message} />
       <Grid
@@ -131,7 +131,9 @@ const SimonSays = () => {
       />
 
       <button
-        className={`button ${playing ? "reset" : "start"}`}
+        className={`${styles.button} ${
+          playing ? styles.buttonReset : styles.buttonStart
+        }`}
         onClick={playing ? resetGame : startGame}
       >
         {playing ? "Reset Game" : "Start Game"}

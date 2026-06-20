@@ -1,11 +1,14 @@
 import { colors } from "../utils";
+import styles from "../SimonSays.module.css";
 const Grid = ({ showingSequence, activeTile, handleTileClick }) => {
   return (
-    <div className={`grid ${showingSequence ? "disabled" : ""}`}>
+    <div
+      className={`${styles.grid} ${showingSequence ? styles.gridDisabled : ""}`}
+    >
       {colors.map((color, index) => (
         <button
           key={index}
-          className={`tile ${activeTile === index ? "active" : ""}`}
+          className={`${styles.tile} ${activeTile === index ? styles.tileActive : ""}`}
           style={{ backgroundColor: color }}
           onClick={() => handleTileClick(index)}
         />

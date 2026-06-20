@@ -1,4 +1,5 @@
 import { GRID_SIZE } from "../utils";
+import styles from "../Snake.module.css";
 const SnakeBoard = ({
   snake,
   food,
@@ -8,7 +9,7 @@ const SnakeBoard = ({
 }) => {
   return (
     <div
-      className="snake-board"
+      className={styles.board}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -27,7 +28,11 @@ const SnakeBoard = ({
         return (
           <div
             key={index}
-            className={`cell ${isHead ? `head ${direction.toLowerCase()}` : ""} ${isBody ? "body" : ""} ${isFood ? "food" : ""}`}
+            className={`${styles.cell}
+              ${isHead ? `${styles.head} ${styles[direction.toLowerCase()]}` : ""}
+              ${isBody ? styles.body : ""}
+              ${isFood ? styles.food : ""}
+            `}
           />
         );
       })}

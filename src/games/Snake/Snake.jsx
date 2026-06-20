@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Snake.css";
+import styles from "./Snake.module.css";
 import { playSoundEffect } from "./sounds";
 import {
   DIRS,
@@ -173,9 +173,9 @@ const Snake = () => {
   };
 
   return (
-    <div className="snake-screen">
+    <div className={styles.screen}>
       <SnakeHeader score={score} best={best} />
-      <div className="board-container">
+      <div className={styles.boardContainer}>
         <SnakeBoard
           snake={snake}
           food={food}
@@ -191,7 +191,7 @@ const Snake = () => {
         />
       </div>
       <button
-        className={`restart-btn ${!gameOver && firstStart ? "disable" : null}`}
+        className={`${styles.restartBtn} ${!gameOver && firstStart ? styles.disable : null}`}
         disabled={!gameOver && firstStart}
         onClick={handleButtonClick}
       >
