@@ -1,7 +1,11 @@
 import { useRef } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { login, logout } from "../firebase/auth";
 
 const NavBar = () => {
+  const user = useSelector((state) => state.user.user);
+
   return (
     <nav
       className="navbar navbar-expand-lg bg-body-tertiary"
@@ -26,6 +30,25 @@ const NavBar = () => {
             <Link className="nav-link nav-comp" to="/profile">
               <p className="nav-font">Profile</p>
             </Link>
+            {user ? (
+              <div className="user-section">
+                <button className="nav-link nav-comp" onClick={logout}>
+                  <p className="nav-font">Logout</p>
+                </button>
+                <img
+                  src={user.photoURL}
+                  alt={user.displayName}
+                  className="profile-pic"
+                />
+              </div>
+            ) : (
+              <div className="user-section">
+                <button className="nav-link nav-comp" onClick={login}>
+                  <p className="nav-font">Login</p>
+                </button>
+                <div className="login-tooltip">Login to save scores & join leaderboards🏆</div>
+              </div>
+            )}
           </div>
         </div>
       </div>
