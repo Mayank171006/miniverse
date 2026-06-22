@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 const Games = () => {
   return (
     <>
-      <div class="card" style={{ width: "18rem" }}>
-        <img src="..." class="card-img-top" alt="..." />
+      <div
+        class="card main-card"
+        style={{ width: "18rem", boxShadow: "0 8px 24px rgba(0,0,0,0.25)" }}
+      >
+        <img
+          src="ReactionTest.png"
+          class="card-img-top"
+          alt="Reaction_test_game"
+        />
         <div class="card-body">
           <h5 class="card-title">Reaction Test</h5>
           <p class="card-text">
@@ -18,8 +25,11 @@ const Games = () => {
           </center>
         </div>
       </div>
-      <div class="card" style={{ width: "18rem" }}>
-        <img src="..." class="card-img-top" alt="..." />
+      <div
+        class="card"
+        style={{ width: "18rem", boxShadow: "0 8px 24px rgba(0,0,0,0.25)" }}
+      >
+        <img src="Snake.png" class="card-img-top" alt="Snake_game_image" />
         <div class="card-body">
           <h5 class="card-title">Snake</h5>
           <p class="card-text">
@@ -33,8 +43,11 @@ const Games = () => {
           </center>
         </div>
       </div>
-      <div class="card" style={{ width: "18rem" }}>
-        <img src="..." class="card-img-top" alt="..." />
+      <div
+        class="card"
+        style={{ width: "18rem", boxShadow: "0 8px 24px rgba(0,0,0,0.25)" }}
+      >
+        <img src="SimonSays.png" class="card-img-top" alt="Simon_says_image" />
         <div class="card-body">
           <h5 class="card-title">Simon Says</h5>
           <p class="card-text">
@@ -48,8 +61,11 @@ const Games = () => {
           </center>
         </div>
       </div>
-      <div class="card" style={{ width: "18rem" }}>
-        <img src="..." class="card-img-top" alt="..." />
+      <div
+        class="card"
+        style={{ width: "18rem", boxShadow: "0 8px 24px rgba(0,0,0,0.25)" }}
+      >
+        <img src="2048.png" class="card-img-top" alt="2048_image" />
         <div class="card-body">
           <h5 class="card-title">2048</h5>
           <p class="card-text">
