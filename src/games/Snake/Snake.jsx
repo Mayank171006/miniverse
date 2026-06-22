@@ -11,6 +11,8 @@ import {
 import SnakeHeader from "./components/SnakeHeader";
 import SnakeBoard from "./components/SnakeBoard";
 import Overlay from "./components/Overlay";
+import { useSelector } from "react-redux";
+import { getGameStats, updateGameStats } from "../../firebase/scores";
 
 const Snake = () => {
   const initialSnake = [generateSnakePosition()];
@@ -27,6 +29,46 @@ const Snake = () => {
   const [touchStart, setTouchStart] = useState(null);
 
   const speed = calculateSpeed(score);
+
+  const user = useSelector((state) => state.user.user);
+
+  // Load Stats based on firestore data
+  useEffect(() => {
+    if (!user) {
+      setBest(0);
+      setGameOver(false);
+      setScore(0);
+      setFirstStart(false);
+
+      const newSnake = [generateSnakePosition()];
+      setSnake(newSnake);
+      setFood(generateFoodPosition(newSnake));
+      setDirection("RIGHT");
+
+      return;
+    }
+
+    const loadStats = async () => {
+      try {
+        const stats = await getGameStats(user.uid, "snake");
+
+        setBest(stats.bestScore === null ? 0 : stats.bestScore);
+
+        setGameOver(false);
+        setScore(0);
+        setFirstStart(false);
+
+        const newSnake = [generateSnakePosition()];
+        setSnake(newSnake);
+        setFood(generateFoodPosition(newSnake));
+        setDirection("RIGHT");
+      } catch (error) {
+        console.error("Failed to load stats:", error);
+      }
+    };
+
+    loadStats();
+  }, [user]);
 
   // Handle swipe start by storing the initial touch position
   const handleTouchStart = (e) => {
@@ -74,6 +116,21 @@ const Snake = () => {
       playSoundEffect("lose");
     }
   }, [gameOver]);
+
+  // Save Score in firebase
+  useEffect(() => {
+    if (!gameOver || !user) return;
+
+    const saveScore = async () => {
+      try {
+        await updateGameStats(user.uid, "snake", score, true);
+      } catch (error) {
+        console.error("Failed to save score:", error);
+      }
+    };
+
+    saveScore();
+  }, [gameOver, user]);
 
   // Listen for keyboard arrow keys to control snake movement
   useEffect(() => {

@@ -6,6 +6,9 @@ import {
   screenClasses,
   buttonClasses,
 } from "./utils";
+import { useSelector } from "react-redux";
+import { getGameStats, updateGameStats } from "../../firebase/scores";
+
 const ReactionTest = () => {
   const [best, setBest] = useState("__");
   const [totalTime, setTotalTime] = useState(0);
@@ -18,9 +21,45 @@ const ReactionTest = () => {
   const startTimeRef = useRef(null);
   const timeoutRef = useRef(null);
 
+  const user = useSelector((state) => state.user.user);
+
   useEffect(() => {
     return () => clearTimeout(timeoutRef.current);
   }, []);
+
+  useEffect(() => {
+    if (!user) {
+      setBest("__");
+      setGamesCount(0);
+      setTotalTime(0);
+
+      setMessage("Start the game");
+      setScreenState("start");
+      setButtonState("start");
+      setReactionComment("");
+
+      return;
+    }
+
+    const loadStats = async () => {
+      try {
+        const stats = await getGameStats(user.uid, "reactionTest");
+
+        setGamesCount(stats.gamesPlayed);
+        setTotalTime(stats.totalScore);
+        setBest(stats.bestScore === null ? "__" : stats.bestScore);
+
+        setMessage("Start the game");
+        setScreenState("start");
+        setButtonState("start");
+        setReactionComment("");
+      } catch (error) {
+        console.error("Failed to load stats:", error);
+      }
+    };
+
+    loadStats();
+  }, [user]);
 
   const startGame = () => {
     clearTimeout(timeoutRef.current);
@@ -38,7 +77,7 @@ const ReactionTest = () => {
     }, waitTime);
   };
 
-  const handleClickScreen = () => {
+  const handleClickScreen = async () => {
     if (screenState === "wait") {
       clearTimeout(timeoutRef.current);
 
@@ -58,6 +97,14 @@ const ReactionTest = () => {
       if (best === "__" || reactionTime < best) setBest(reactionTime);
       setTotalTime((prev) => prev + reactionTime);
       setGamesCount((prev) => prev + 1);
+
+      if (user) {
+        try {
+          await updateGameStats(user.uid, "reactionTest", reactionTime, false);
+        } catch (error) {
+          console.error("Failed to save score:", error);
+        }
+      }
     }
   };
 

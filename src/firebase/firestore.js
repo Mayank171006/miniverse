@@ -12,6 +12,7 @@ export const createUserIfNotExists = async (user) => {
       displayName: user.displayName,
       email: user.email,
       photoURL: user.photoURL,
+      stats: {},
       createdAt: serverTimestamp(),
     });
   }

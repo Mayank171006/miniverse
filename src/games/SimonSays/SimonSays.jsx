@@ -1,10 +1,12 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./SimonSays.module.css";
 import { playTileSound } from "./sounds";
 import Scoreboard from "./components/Scoreboard";
 import Statusbox from "./components/Statusbox";
 import Grid from "./components/Grid";
 import { randomColorGenerator, sleep } from "./utils";
+import { useSelector } from "react-redux";
+import { getGameStats, updateGameStats } from "../../firebase/scores";
 
 const SimonSays = () => {
   const [activeTile, setActiveTile] = useState(null);
@@ -20,6 +22,51 @@ const SimonSays = () => {
   const [playing, setPlaying] = useState(false);
   const [showingSequence, setShowingSequence] = useState(false);
   const cancelledRef = useRef(false);
+
+  const user = useSelector((state) => state.user.user);
+
+  useEffect(() => {
+    if (!user) {
+      setHighScore(0);
+      setActiveTile(null);
+      setRound(1);
+      setScore(0);
+      setStatus("start");
+      setMessage(
+        "Welcome to Simon Says!! Press Start & Repeat the sequence given by Simon",
+      );
+      setSequence([]);
+      setUserSequence([]);
+      setPlaying(false);
+      cancelledRef.current = true;
+      setShowingSequence(false);
+      return;
+    }
+
+    const loadStats = async () => {
+      try {
+        const stats = await getGameStats(user.uid, "simonSays");
+
+        setHighScore(stats.bestScore === null ? 0 : stats.bestScore);
+        setActiveTile(null);
+        setRound(1);
+        setScore(0);
+        setStatus("start");
+        setMessage(
+          "Welcome to Simon Says!! Press Start & Repeat the sequence given by Simon",
+        );
+        setSequence([]);
+        setUserSequence([]);
+        setPlaying(false);
+        cancelledRef.current = false;
+        setShowingSequence(false);
+      } catch (error) {
+        console.error("Failed to load stats:", error);
+      }
+    };
+
+    loadStats();
+  }, [user]);
 
   const showSequence = async (arr) => {
     const onTime = Math.max(300, 1000 - round * 40);
@@ -96,7 +143,13 @@ const SimonSays = () => {
       if (score > highScore) {
         setHighScore(score);
       }
-
+      if (user) {
+        try {
+          await updateGameStats(user.uid, "simonSays", score, true);
+        } catch (error) {
+          console.error("Failed to save score:", error);
+        }
+      }
       setPlaying(false);
       return;
     }

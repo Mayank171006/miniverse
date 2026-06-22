@@ -31,3 +31,7 @@ export const isGameOver = (board) => {
 
   return true;
 };
+
+export const getHighestTile=(board)=>{
+  return Math.max(...board.flat());
+}
