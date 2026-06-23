@@ -80,13 +80,3 @@
   transform: rotate(45deg);
 }
 
-/*Games*/
-img{
-  height: 300px;
-  width: 300px;
-  object-fit: cover;
-}
-.card-body{
-  background-color: aliceblue;
-  text-align: center;
-}

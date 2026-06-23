@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import { createContext } from "react";
-import Games from "../pages/Games";
+import Games from "../pages/Games/Games";
 import Leaderboard from "../pages/Leaderboard";
-import Profile from "../pages/Profile";
+import Profile from "../pages/Profile/Profile";
 import Achievements from "../pages/Achievements";
 import Snake from "../games/Snake/Snake";
 import SimonSays from "../games/SimonSays/SimonSays";

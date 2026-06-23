@@ -1,0 +1,83 @@
+.gamesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: min(1300px, 100%);
+  margin: 0 auto;
+  padding: 2rem;
+}
+@media (max-width: 640px) {
+  .gamesGrid {
+    padding: 0;
+  }
+}
+.gameCard {
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(30, 41, 59, 0.95),
+    rgba(51, 65, 85, 0.95)
+  );
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: 20px;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.gameCard:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(59, 130, 246, 0.6);
+
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.15);
+}
+
+.gameImage {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.cardContent {
+  padding: 1.25rem;
+}
+
+.cardContent h3 {
+  color: #f8fafc;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.cardContent p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  min-height: 80px;
+}
+
+.cardContent p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  min-height: 80px;
+}
+
+.playButton {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+.playButton:hover {
+  background: #3b82f6;
+  transform: translateY(-2px);
+}

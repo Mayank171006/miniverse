@@ -8,19 +8,22 @@ import Loader from "./components/Loader";
 function App() {
   const loading = useSelector((state) => state.user.loading);
 
-  if (loading) {
-    return <div className="home-container">
-        <Loader/>
-      </div>;
-  }
-
   return (
     <>
       <AuthListener />
-      <NavBar />
-      <div className="home-container">
-        <Outlet />
-      </div>
+
+      {loading ? (
+        <div className="home-container">
+          <Loader />
+        </div>
+      ) : (
+        <>
+          <NavBar />
+          <div className="home-container">
+            <Outlet />
+          </div>
+        </>
+      )}
     </>
   );
 }

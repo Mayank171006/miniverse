@@ -50,13 +50,11 @@ export async function getGameStats(uid, gameName) {
 
 export async function update2048HighestTile(uid, highestTile) {
   const userRef = doc(db, "users", uid);
-
   const snapshot = await getDoc(userRef);
 
   if (!snapshot.exists()) return;
 
   const data = snapshot.data();
-
   const currentTile = data.stats?.game2048?.highestTile || 0;
 
   if (highestTile > currentTile) {
@@ -64,4 +62,15 @@ export async function update2048HighestTile(uid, highestTile) {
       "stats.game2048.highestTile": highestTile,
     });
   }
+}
+
+export async function getUserData(uid) {
+  const userRef = doc(db, "users", uid);
+  const snapshot = await getDoc(userRef);
+
+  if (!snapshot.exists()) {
+    return null;
+  }
+
+  return snapshot.data();
 }
