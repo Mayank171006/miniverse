@@ -4,7 +4,7 @@ import { createContext } from "react";
 import Games from "../pages/Games/Games";
 import Leaderboard from "../pages/Leaderboard";
 import Profile from "../pages/Profile/Profile";
-import Achievements from "../pages/Achievements";
+import Achievements from "../pages/Achievements/Achievements";
 import Snake from "../games/Snake/Snake";
 import SimonSays from "../games/SimonSays/SimonSays";
 import ReactionTest from "../games/ReactionTest/ReactionTest";

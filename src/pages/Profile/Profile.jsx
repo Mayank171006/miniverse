@@ -37,7 +37,7 @@ const Profile = () => {
     return (
       <div className={styles.profilePage}>
         <ProfileCard>
-          <h2>Please login to view your profile.</h2>
+          Please login to view your profile
         </ProfileCard>
       </div>
     );

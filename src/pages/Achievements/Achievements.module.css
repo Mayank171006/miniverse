@@ -1,0 +1,154 @@
+.page {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.header h1 {
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.categoryTitle {
+  color: #f8fafc;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+  border-left: 4px solid #3b82f6;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 20px;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 220px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.unlocked {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 41, 59, 0.95),
+    rgba(51, 65, 85, 0.95)
+  );
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    0 0 15px rgba(59, 130, 246, 0.12);
+}
+
+.unlocked:hover {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.18);
+}
+
+.locked {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  opacity: 0.65;
+  filter: grayscale(0.6);
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  color: #f8fafc;
+  margin-bottom: 0.75rem;
+  font-size: 1.15rem;
+}
+
+.card p {
+  color: #cbd5e1;
+
+  line-height: 1.5;
+
+  flex-grow: 1;
+}
+
+.status {
+  margin-top: 1rem;
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  color: #60a5fa;
+}
+
+.emptyState {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.95),
+    rgba(30, 41, 59, 0.95)
+  );
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 24px;
+  padding: 2rem;
+  text-align: center;
+  color: #f8fafc;
+}
+
+@media (max-width: 640px) {
+  .card {
+    min-height: 90px;
+    padding: 0.75rem;
+  }
+
+  .icon {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card h3 {
+    font-size: 0.8rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .card p {
+    font-size: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .status {
+    font-size: 0.6rem;
+  }
+
+  .grid {
+    gap: 0.75rem;
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .categoryTitle {
+    font-size: 1.2rem;
+  }
+}
