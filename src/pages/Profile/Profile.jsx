@@ -91,7 +91,7 @@ const Profile = () => {
           </p>
 
           <p className={styles.info}>
-            Member Since {memberSince}
+            Joined {memberSince}
           </p>
         </div>
       </ProfileCard>

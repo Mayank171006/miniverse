@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import AuthListener from "./components/AuthListener";
 import { useSelector } from "react-redux";
 import Loader from "./components/Loader";
+import MobileNav from "./components/MobileNav";
 function App() {
   const loading = useSelector((state) => state.user.loading);
 
@@ -18,6 +19,7 @@ function App() {
           <div className="home-container">
             <Loader />
           </div>
+          <MobileNav />
         </>
       ) : (
         <>
@@ -25,6 +27,7 @@ function App() {
           <div className="home-container">
             <Outlet />
           </div>
+          <MobileNav />
         </>
       )}
     </>

@@ -20,7 +20,7 @@ const NavBar = () => {
           <div className="navbar-nav">
             <NavLink
               className={({ isActive }) =>
-                `nav-link nav-comp ${isActive ? "active active-nav" : ""}`
+                `nav-link nav-comp hide-nav-comp ${isActive ? "active active-nav" : ""}`
               }
               to="/"
             >
@@ -28,7 +28,7 @@ const NavBar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                `nav-link nav-comp ${isActive ? "active active-nav" : ""}`
+                `nav-link nav-comp hide-nav-comp ${isActive ? "active active-nav" : ""}`
               }
               to="/achievements"
             >
@@ -36,7 +36,7 @@ const NavBar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                `nav-link nav-comp ${isActive ? "active active-nav" : ""}`
+                `nav-link nav-comp hide-nav-comp ${isActive ? "active active-nav" : ""}`
               }
               to="/leaderboard"
             >
@@ -44,7 +44,7 @@ const NavBar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                `nav-link nav-comp ${isActive ? "active active-nav" : ""}`
+                `nav-link nav-comp hide-nav-comp ${isActive ? "active active-nav" : ""}`
               }
               to="/profile"
             >
@@ -67,7 +67,7 @@ const NavBar = () => {
                   <p className="nav-font">Login</p>
                 </button>
                 <div className="login-tooltip">
-                  Login to save scores & join leaderboards🏆
+                  Login to save scores & rank 🏆
                 </div>
               </div>
             )}
