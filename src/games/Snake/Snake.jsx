@@ -137,18 +137,22 @@ const Snake = () => {
     const handleKeyDown = (e) => {
       switch (e.key) {
         case "ArrowUp":
+          e.preventDefault();
           setDirection((prev) => (prev !== "DOWN" ? "UP" : prev));
           break;
 
         case "ArrowDown":
+          e.preventDefault();
           setDirection((prev) => (prev !== "UP" ? "DOWN" : prev));
           break;
 
         case "ArrowLeft":
+          e.preventDefault();
           setDirection((prev) => (prev !== "RIGHT" ? "LEFT" : prev));
           break;
 
         case "ArrowRight":
+          e.preventDefault();
           setDirection((prev) => (prev !== "LEFT" ? "RIGHT" : prev));
           break;
       }
