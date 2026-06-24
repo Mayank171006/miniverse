@@ -27,6 +27,20 @@
 }
 .nav-comp {
   margin-right: 30px;
+  transition: all 0.25s ease;
+}
+.active-nav {
+  position: relative;
+}
+
+.active-nav::after {
+  content: "";
+  position: absolute;
+  bottom: +5px;
+  width: 60%;
+  height: 3px;
+  border-radius: 999px;
+  background: #3b82f6;
 }
 .nav-font {
   font-size: 20px;

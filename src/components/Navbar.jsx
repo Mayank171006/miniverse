@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { login, logout } from "../firebase/auth";
 
 const NavBar = () => {
@@ -18,18 +18,38 @@ const NavBar = () => {
         </div>
         <div id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link className="nav-link nav-comp" to="/">
+            <NavLink
+              className={({ isActive }) =>
+                `nav-link nav-comp ${isActive ? "active active-nav" : ""}`
+              }
+              to="/"
+            >
               <p className="nav-font">Games</p>
-            </Link>
-            <Link className="nav-link nav-comp" to="/achievements">
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `nav-link nav-comp ${isActive ? "active active-nav" : ""}`
+              }
+              to="/achievements"
+            >
               <p className="nav-font">Achievements</p>
-            </Link>
-            <Link className="nav-link nav-comp" to="/leaderboard">
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `nav-link nav-comp ${isActive ? "active active-nav" : ""}`
+              }
+              to="/leaderboard"
+            >
               <p className="nav-font">Leaderboard</p>
-            </Link>
-            <Link className="nav-link nav-comp" to="/profile">
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `nav-link nav-comp ${isActive ? "active active-nav" : ""}`
+              }
+              to="/profile"
+            >
               <p className="nav-font">Profile</p>
-            </Link>
+            </NavLink>
             {user ? (
               <div className="user-section">
                 <button className="nav-link nav-comp" onClick={logout}>
@@ -46,7 +66,9 @@ const NavBar = () => {
                 <button className="nav-link nav-comp" onClick={login}>
                   <p className="nav-font">Login</p>
                 </button>
-                <div className="login-tooltip">Login to save scores & join leaderboards🏆</div>
+                <div className="login-tooltip">
+                  Login to save scores & join leaderboards🏆
+                </div>
               </div>
             )}
           </div>

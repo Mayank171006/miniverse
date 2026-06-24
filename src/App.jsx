@@ -13,9 +13,12 @@ function App() {
       <AuthListener />
 
       {loading ? (
-        <div className="home-container">
-          <Loader />
-        </div>
+        <>
+          <NavBar />
+          <div className="home-container">
+            <Loader />
+          </div>
+        </>
       ) : (
         <>
           <NavBar />
