@@ -122,7 +122,6 @@ npm run dev
 - Additional mini-games
 - More achievements
 - Enhanced player statistics
-- Global leaderboards
 - Improved mobile experience
 - Social and community features
 
