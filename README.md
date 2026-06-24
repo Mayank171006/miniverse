@@ -130,7 +130,3 @@ npm run dev
 ## 👨‍💻 Author
 
 **Mayank Kumar**
-
-GitHub: https://github.com/Mayank171006
-
----
