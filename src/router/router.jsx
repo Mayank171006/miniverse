@@ -1,6 +1,5 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import App from "../App";
-import { createContext } from "react";
 import Games from "../pages/Games/Games";
 import Leaderboard from "../pages/Leaderboard/Leaderboard";
 import Profile from "../pages/Profile/Profile";
@@ -9,7 +8,7 @@ import Snake from "../games/Snake/Snake";
 import SimonSays from "../games/SimonSays/SimonSays";
 import ReactionTest from "../games/ReactionTest/ReactionTest";
 import Game2048 from "../games/2048/2048";
-export const router = createBrowserRouter(
+export const router = createHashRouter(
   [
     {
       path: "/",
