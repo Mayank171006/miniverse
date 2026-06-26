@@ -72,6 +72,7 @@ Signing in allows players to:
 
 ### Frontend
 
+- JavaScript
 - React
 - Vite
 - React Router
@@ -84,7 +85,8 @@ Signing in allows players to:
 
 ### Styling
 
-- CSS 
+- CSS
+- CSS Modules
 - Bootstrap
 
 ---
