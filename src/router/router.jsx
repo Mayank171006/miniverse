@@ -49,7 +49,4 @@ export const router = createHashRouter(
       ],
     },
   ],
-  {
-    basename: "/miniverse",
-  },
 );
