@@ -1,4 +1,4 @@
-import { createHashRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Games from "../pages/Games/Games";
 import Leaderboard from "../pages/Leaderboard/Leaderboard";
@@ -8,7 +8,7 @@ import Snake from "../games/Snake/Snake";
 import SimonSays from "../games/SimonSays/SimonSays";
 import ReactionTest from "../games/ReactionTest/ReactionTest";
 import Game2048 from "../games/2048/2048";
-export const router = createHashRouter(
+export const router = createBrowserRouter(
   [
     {
       path: "/",
@@ -49,4 +49,7 @@ export const router = createHashRouter(
       ],
     },
   ],
+  {
+    basename: "/miniverse",
+  },
 );
